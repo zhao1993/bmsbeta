@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-7-24 20:10:02 by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="zhao.blog.managementsystem.entity.Critique" table="critique" catalog="blog">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="critique" class="zhao.blog.managementsystem.entity.Critique" fetch="select">
+            <column name="critique_id" />
+        </many-to-one>
+        <many-to-one name="user" class="zhao.blog.managementsystem.entity.User" fetch="select">
+            <column name="user" not-null="true" />
+        </many-to-one>
+        <property name="articleId" type="java.lang.Integer">
+            <column name="article_id" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="512" />
+        </property>
+        <property name="time" type="timestamp">
+            <column name="time" length="19" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="24" not-null="true" />
+        </property>
+        <property name="notice" type="string">
+            <column name="notice" />
+        </property>
+        <set name="critiques" table="critique" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="critique_id" />
+            </key>
+            <one-to-many class="zhao.blog.managementsystem.entity.Critique" />
+        </set>
+    </class>
+</hibernate-mapping>

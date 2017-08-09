@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+	/*左侧菜单宽度限制*/
+	.panel-group{width:200px;} 
+ 	/*左侧菜单颜色及下划线*/
+ 	.panel-group a{color:#333;text-decoration: none;}
+	/*菜单的悬浮样式*/
+ 	.panel-title{cursor:pointer;}
+ 	/*表格中的复选框居中显示*/
+ 	.table-bordered>thead>tr>th,.table-bordered>tbody>tr>td:first-child/*, .table-bordered>tbody>tr>td:nth-child(2) */{vertical-align: middle;text-align: center;}
+ 	/*表格的选中效果*/
+ 	.table-tr-select{background-color: #EEE;}
+ 	/*面板的内容内边距*/
+ 	.panel-body-custom {padding-bottom:0px; padding-top: 0px; }

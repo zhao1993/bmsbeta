@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+          
+   <!-- 把 Spring 容器集成到 Web 应用里面 -->
+  <listener>
+    <listener-class>
+      org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+
+  <!-- spring配置文件 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+
+  <!--DispatcherServlet是前端控制器设计模式的实现，提供Spring Web MVC的集中访问点，而且负责职责的分派，
+  而且与Spring IoC容器无缝集成，从而可以获得Spring的所有好处。-->
+  <!--DispatcherServlet会默认加载[servlet-name]-servlet.xml文件-->
+  <servlet>
+    <servlet-name>spring</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+        <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-servlet.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>spring</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <!-- <url-pattern>login<![CDATA[&]]>signup/*</url-pattern>-->
+    <url-pattern>/js/*</url-pattern>
+    <url-pattern>/css/*</url-pattern>
+    <url-pattern>/ckeditor/*</url-pattern>
+    <url-pattern>/bootstrap/*</url-pattern>
+  </servlet-mapping>
+  <!--解决springmvc传递给后台的中文数据乱码问题-->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <filter-class>
+      org.springframework.orm.hibernate4.support.OpenSessionInViewFilter
+    </filter-class>
+    <init-param>
+      <param-name>singleSession</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+<!--
+  <filter>
+    <filter-name>openSessionInViewFilter</filter-name>
+    <filter-class>com.htdz.util.OpenSessionInViewFilterImpl</filter-class>
+
+  </filter>
+  -->
+
+</web-app>
