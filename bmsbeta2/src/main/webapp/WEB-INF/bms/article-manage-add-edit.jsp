@@ -217,12 +217,12 @@ select::-ms-expand { display: none; }
 					language:'zh',
 					allowedFileExtensions:['jpg','png'],
 					initialPreviewAsData: true,
-					initialPreview:['http://localhost:8080/bmsbeta2/article/queryimage?image=${article.image}'],
+						initialPreview:['http://localhost:8080/bmsbeta2/article/queryimage?image=${article.image}'],
 			        initialPreviewConfig: [{caption: "${article.image}"}],
 					maxFileCount:1,
 					enctype:'multipart/form-data',
 					showUpload:false,
-					browseClass:'btn btn-default',
+					browseClass:'btn btn-default'
 				});
 				//分类切换
 			      $("#type-carousel").carousel('cycle');

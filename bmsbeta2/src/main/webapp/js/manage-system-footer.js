@@ -87,11 +87,13 @@ $(function(){
 			}
 			//A标签返回上一级[a 标签类选择器 retreat]
 			if($('.retreat').length>0){
-				$('.retreat').click(function(){
+				$('.retreat').attr('href','query');
+				/* 2017年8月6日16:10:28功能不通用
+				 * $('.retreat').click(function(){
 					self.location = document.referrer;
 				})
 				.attr('herf','javascript:void(0);')
-				.css('cursor','pointer');
+				.css('cursor','pointer');*/
 			}
 			//返回后台管理首页[....]
 			if($('.mshome').length>0){

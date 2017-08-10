@@ -12,13 +12,13 @@
             <column name="title" not-null="true" />
         </property>
         <property name="image" type="string">
-            <column name="image" not-null="true" />
+            <column name="image" />
         </property>
         <property name="content" type="string">
-            <column name="content" not-null="true" />
+            <column name="content" />
         </property>
         <property name="notice" type="string">
-            <column name="notice" not-null="true" />
+            <column name="notice" />
         </property>
         <property name="time" type="timestamp">
             <column name="time" length="19" not-null="true" />

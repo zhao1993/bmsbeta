@@ -20,7 +20,7 @@
 			<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<a class="mshome">后台管理</a>&nbsp;>&nbsp;相册管理
 		</div>
 			<div class="alert alert-info">  
-			 <strong>提示:<br/>相册删除(关联的相册评论将自动删除)、修改操作不可恢复,请谨慎操作!
+			 <strong>提示:<br/>相册删除(关联的相册评论以及包含的图片将自动删除)、修改操作不可恢复,请谨慎操作!
 			 </strong>
 		 </div>
 <table class="table table-bordered table-hover">
@@ -29,16 +29,18 @@
       <th>序号</th>
       <th>相册集</th>
       <th>图片数量</th>
+      <th>相册备注</th>
       <th>创建日期</th>
     </tr>
   </thead>
   <tbody>
-  <c:forEach begin="0" end="6" step="1" var="p">
+  <c:forEach items="${albums}" var="album">
     <tr>
-      <td><span class='id'>${p}</span></td>
-      <td>风景集</td>
-      <td>${p+1}${p}</td>
-      <td>2017年7月13日</td>
+      <td><span class='id'>${album.id}</span></td>
+      <td>${album.title}</td>
+      <td>1111</td>
+      <td>${album.content}</td>
+      <td>${album.time}</td>
     </tr>
   </c:forEach>
   </tbody>
