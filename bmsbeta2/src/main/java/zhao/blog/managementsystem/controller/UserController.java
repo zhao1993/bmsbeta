@@ -1,16 +1,12 @@
 package zhao.blog.managementsystem.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import zhao.blog.managementsystem.constant.Common;
 import zhao.blog.managementsystem.entity.User;
 import zhao.blog.managementsystem.service.UserService;
@@ -29,10 +25,7 @@ public class UserController {
 	
 	@RequestMapping("/delete")
 	public ModelAndView delete(String ids,HttpSession session){
-		List<Integer> arrid = Parser.str2IntL(ids, "-");
-		for (Integer id : arrid) {
-			userServiceImpl.deleteById(id);
-		}
+		userServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum",session.getAttribute("nowPage"));
 		return modelAndView;

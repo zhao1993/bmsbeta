@@ -14,7 +14,7 @@ public class Parser {
 	 * @return 返回一个数字集合 
 	 * @throws 并不会抛出异常,而是会返回一个为空的集合
 	 */
-	public static List<Integer> str2IntL(String strs ,String regex){
+	public static List<Integer> str2IntLi(String strs ,String regex){
 		String[] arrs = strs.split(regex);
 		List<Integer> intarr = new ArrayList<Integer>();
 		for (String str : arrs) {
@@ -27,5 +27,13 @@ public class Parser {
 			}
 		}
 		return intarr;
+	}
+	public static int[] str2IntL(String strs,String regex){
+		List<Integer> intlis = Parser.str2IntLi(strs, regex);
+		int[] ints = new int[intlis.size()];
+		for (int i = 0; i < ints.length; i++) {
+			ints[i] = intlis.get(i);
+		}
+		return ints;
 	}
 }

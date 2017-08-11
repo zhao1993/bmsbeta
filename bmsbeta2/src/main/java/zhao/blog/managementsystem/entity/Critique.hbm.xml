@@ -8,10 +8,10 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="critique" class="zhao.blog.managementsystem.entity.Critique" fetch="select">
+        <many-to-one name="critique" class="zhao.blog.managementsystem.entity.Critique" fetch="select" cascade="delete">
             <column name="critique_id" />
         </many-to-one>
-        <many-to-one name="user" class="zhao.blog.managementsystem.entity.User" fetch="select">
+        <many-to-one name="user" class="zhao.blog.managementsystem.entity.User" fetch="select" cascade="delete">
             <column name="user" not-null="true" />
         </many-to-one>
         <property name="articleId" type="java.lang.Integer">

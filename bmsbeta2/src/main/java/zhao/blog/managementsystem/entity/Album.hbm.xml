@@ -23,7 +23,7 @@
         <property name="time" type="timestamp">
             <column name="time" length="19" not-null="true" />
         </property>
-        <set name="photos" table="photo" inverse="true" lazy="true" fetch="select">
+        <set name="photos" table="photo" inverse="true" lazy="true" fetch="select" cascade="delete">
             <key>
                 <column name="album_id" not-null="true" />
             </key>

@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import zhao.blog.managementsystem.dao.AlbumDao;
 import zhao.blog.managementsystem.dao.PhotoDao;
-import zhao.blog.managementsystem.entity.Album;
 import zhao.blog.managementsystem.entity.Photo;
 
 @Repository

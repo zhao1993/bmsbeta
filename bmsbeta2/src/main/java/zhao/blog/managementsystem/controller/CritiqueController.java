@@ -1,6 +1,5 @@
 package zhao.blog.managementsystem.controller;
 
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -28,10 +27,7 @@ public class CritiqueController {
 	
 	@RequestMapping("/delete")
 	public ModelAndView delete(String ids,HttpSession session){
-		List<Integer> arrid = Parser.str2IntL(ids, "-");
-		for (Integer id : arrid) {
-			critiqueServiceImpl.deleteById(id);
-		}
+		critiqueServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum",session.getAttribute("nowPage"));
 		return modelAndView;

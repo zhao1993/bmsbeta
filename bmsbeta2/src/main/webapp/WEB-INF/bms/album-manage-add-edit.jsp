@@ -77,7 +77,7 @@
 			}
 			var urlfix = "http://localhost:8080/bmsbeta2/album/queryimage?image=";
 			var initialPreview = new Array();
-			var initialPreviewConfig = '[';
+			var initialPreviewConfig = new Array();
 			if('${album}'!=''){
 				$.ajax({
 				type:'post',
@@ -85,13 +85,18 @@
 				dataType:'json',
 				data:{id:'${album.id}'},
 				async:false,
-				success:function(images){
-				alert(images);
-					/* $.each(images,function(i,image){
-							initialPreview.push(urlfix+image);
-							initialPreviewConfig+=(image);
-							initialPreviewConfig+=((i+1)==images.length?"]":",");
-						}); */
+				success:function(lists){
+					 $.each(lists,function(i,photo){
+							initialPreview.push(urlfix+photo.image);
+							var config = new Object();
+							config.caption = photo.image;
+							config.url = "deletephoto";
+							config.key = photo.id;
+							config.extra =function(){
+								alert('aaa');
+							}
+							initialPreviewConfig.push(config);
+						}); 
 					}
 				});
 			}

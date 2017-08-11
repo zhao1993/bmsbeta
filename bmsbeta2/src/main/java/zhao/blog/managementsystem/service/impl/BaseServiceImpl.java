@@ -44,6 +44,14 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		logger.debug("类型["+baseDaoImpl.getClass()+"] 进行数据删除 ID: "+id);
 		baseDaoImpl.deleteById(id);
 	}
+	
+	/* (non-Javadoc)
+	 * @see zhao.blog.managementsystem.service.BaseService#deleteByIds(int[])
+	 */
+	@Override
+	public void deleteByIds(int... ids) {
+		baseDaoImpl.deleteByIds(ids);
+	}
 
 	/* (non-Javadoc)
 	 * @see zhao.blog.managementsystem.service.BaseService#update(java.lang.Object)
@@ -127,6 +135,5 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		logger.debug(new StringBuffer("正在以每页[").append(pagesize).append("]个数据显示量 查询第[").append(pagenum).append("]页的数据"));
 		return baseDaoImpl.selectCriteria((pagenum-1)*pagesize,pagesize);
 	}
-	
 	
 }

@@ -39,10 +39,7 @@ public class DailyController {
 
 	@RequestMapping("/delete")
 	public ModelAndView delete(String ids, HttpSession session) throws Exception {
-		List<Integer> arrid = Parser.str2IntL(ids, "-");
-		for (Integer id : arrid) {
-			dailyServiceImpl.deleteById(id);
-		}
+		dailyServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum", session.getAttribute("nowPage"));
 		return modelAndView;

@@ -17,6 +17,12 @@ public interface BaseDao<T> {
 	 * 根据id删除某一条数据
 	 */
 	void deleteById(int id);
+	
+	/**
+	 * 根据id集合删除批量数据
+	 * @param ids id数组?
+	 */
+	void deleteByIds(int... ids);
 	/**
 	 * 将bean对象的变化数据修改到数据库
 	 * @param t 将要进行修改的bean对象

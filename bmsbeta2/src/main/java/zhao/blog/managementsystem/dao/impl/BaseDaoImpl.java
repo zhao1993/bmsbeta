@@ -57,6 +57,15 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	/* (non-Javadoc)
+	 * @see zhao.blog.managementsystem.dao.BaseDao#deleteByIds(int[])
+	 */
+	@Override
+	public void deleteByIds(int... ids) {
+		for (int id : ids) {
+			this.deleteById(id);
+		}
+	}
+	/* (non-Javadoc)
 	 * @see zhao.blog.managementsystem.dao.BaseDao#update(java.lang.Object)
 	 */
 	@Override
@@ -98,6 +107,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	/* (non-Javadoc)
 	 * @see zhao.blog.managementsystem.dao.BaseDao#selectCriteria4Object(java.lang.String, java.lang.Object[])
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object> selectCriteria4Object(String queryString, Object... parameters) {
 		Query query = sessionFactory.getCurrentSession().createQuery(queryString);

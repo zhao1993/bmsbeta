@@ -18,6 +18,10 @@ public interface BaseService<T> {
 	 */
 	void deleteById(int id);
 	/**
+	 * @param ids 根据id数组删除批量数据
+	 */
+	void deleteByIds(int... ids);
+	/**
 	 * 将bean对象的变化数据修改到数据库
 	 * @param t 将要进行修改的bean对象
 	 */
@@ -65,4 +69,5 @@ public interface BaseService<T> {
 	 * @return 返回计算过后的总页数
 	 */
 	int allPage(Integer pagesize);
+	
 }

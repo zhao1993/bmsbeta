@@ -53,10 +53,7 @@ public class ArticleController {
 
 	@RequestMapping("/delete")
 	public ModelAndView delete(String ids, HttpSession session) throws Exception {
-		List<Integer> arrid = Parser.str2IntL(ids, "-");
-		for (Integer id : arrid) {
-			articleServiceImpl.deleteById(id);
-		}
+		articleServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum", session.getAttribute("nowPage"));
 		return modelAndView;
