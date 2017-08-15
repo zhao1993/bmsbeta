@@ -26,6 +26,7 @@ import zhao.blog.managementsystem.service.PhotoService;
 import zhao.blog.managementsystem.util.BeanUtil;
 import zhao.blog.managementsystem.util.DateUtil;
 import zhao.blog.managementsystem.util.FileUtil;
+import zhao.blog.managementsystem.util.OneMap;
 import zhao.blog.managementsystem.util.Parser;
 
 @Controller
@@ -48,13 +49,27 @@ public class AlbumController {
 			@RequestParam("file") CommonsMultipartFile[] file ) throws Exception {
 		album.setTime(DateUtil.getTime4J());
 		albumServiceImpl.save(album);
-		album.setImage(savePhoto(request, album, file).getImage());
+		
+		if(file.length==0)
+			album.setImage("default.jpg");
+		else
+			album.setImage(savePhoto(request, album, file).getImage());
+		
 		albumServiceImpl.update(album);
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum", request.getSession().getAttribute("nowPage"));
 		return modelAndView;
 	}
-
+	@ResponseBody
+	@RequestMapping("/addphoto")
+	public String asyncAddPhoto(
+			@RequestParam("file") CommonsMultipartFile file,
+			@RequestParam("albumid") int id,
+			HttpServletRequest request
+			){
+		savePhoto(request, albumServiceImpl.selectById(id), file);
+		return new String("success");
+	}
 	@RequestMapping("/delete")
 	public ModelAndView delete(String ids, HttpSession session) throws Exception {
 		albumServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
@@ -62,6 +77,7 @@ public class AlbumController {
 		modelAndView.addObject("pagenum", session.getAttribute("nowPage"));
 		return modelAndView;
 	}
+	@ResponseBody
 	@RequestMapping("/deletephoto")
 	public ModelAndView deletePhoto(@RequestParam("key") int photoId){
 		Album album = photoServiceImpl.selectAlbumByPhotoId(photoId);
@@ -77,9 +93,10 @@ public class AlbumController {
 	@RequestMapping("/update")		
 	public ModelAndView update(
 			@ModelAttribute("form") Album album, 
-			@RequestParam("file") CommonsMultipartFile file,
+			@RequestParam("file") CommonsMultipartFile[] file,
 			HttpServletRequest request) throws Exception {
 		album.setTime(albumServiceImpl.selectById(album.getId()).getTime());
+		savePhoto(request, album, file);
 		albumServiceImpl.update(album);
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum", request.getSession().getAttribute("nowPage"));
@@ -117,6 +134,11 @@ public class AlbumController {
 		outputStream.close();
 	}
 	
+	@ResponseBody
+	@RequestMapping("/alreadyexisted")
+	public boolean alreayIsExisted(@RequestParam("ajaxParam") Object ajaxParam) throws Exception{
+	 	 return  albumServiceImpl.hasAlbumName(String.valueOf(ajaxParam));
+	}
 	/***********其他方法*********/
 	/**
 	 * 返回被保存的图片对象
@@ -128,10 +150,12 @@ public class AlbumController {
 	private List<Photo> savePhotos(HttpServletRequest request,Album album,CommonsMultipartFile... file){
 		List<Photo> photos = new ArrayList<Photo>(file.length);
 		for (CommonsMultipartFile cmFile : file) {
-			String imageName = FileUtil.UpLoad(request, cmFile, Folder.ALBUM_FOLDER);
-			Photo photo = new Photo(album, imageName,null,null,null,null,DateUtil.getTime4J());
-			photos.add(photo);
-			photoServiceImpl.save(photo);
+			if(cmFile.getSize()>0){
+				OneMap<String, String> pn= FileUtil.upLoadm(request, cmFile, Folder.ALBUM_FOLDER);
+				Photo photo = new Photo(album, pn.getKey(),pn.getValue(),null,null,null,DateUtil.getTime4J());
+				photos.add(photo);
+				photoServiceImpl.save(photo);
+			}
 		}
 		return photos;
 	}
@@ -143,6 +167,7 @@ public class AlbumController {
 	 * @return 返回一个photo实例
 	 */
 	private Photo savePhoto(HttpServletRequest request,Album album,CommonsMultipartFile... file){
-		return savePhotos(request, album, file).get(0);
+		List<Photo> photos = savePhotos(request, album, file);
+		return photos.size()>0?photos.get(0):null;
 	}
 }

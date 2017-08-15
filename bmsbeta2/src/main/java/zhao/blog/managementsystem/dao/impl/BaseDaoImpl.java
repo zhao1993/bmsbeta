@@ -91,7 +91,14 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public List<T> selectAll() {
 		return sessionFactory.getCurrentSession().createQuery("FROM "+simpleName).list();
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see zhao.blog.managementsystem.dao.BaseDao#selectByColumn(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public List<T> selectByColumn(String column, String value) {
+		return selectCriteria4Entity(new StringBuffer("From ") .append(simpleName) .append(" where ") .append(column) .append("= ?").toString(),value); 
+	}
 	/* (non-Javadoc)
 	 * @see zhao.blog.managementsystem.dao.BaseDao#selectCriteria(java.lang.String, java.lang.Object[])
 	 */

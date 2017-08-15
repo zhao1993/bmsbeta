@@ -77,13 +77,13 @@
         <div id="collapse6" class="panel-collapse collapse">
             <div class="panel-body">
 	            <a href="#" class="list-group-item">
-					<span class="glyphicon glyphicon-plus" ></span>&nbsp;&nbsp;系统功能
+					<span class="glyphicon glyphicon-plus" ></span>&nbsp;&nbsp;统计信息
 				</a>
 				<a href="#" class="list-group-item">
 					<span class="glyphicon glyphicon-edit" ></span>&nbsp;&nbsp;系统功能
 				</a>
 				<a href="#" class="list-group-item">
-					<span class="glyphicon glyphicon-trash" ></span>&nbsp;&nbsp;系统功能
+					<span class="glyphicon glyphicon-trash" ></span>&nbsp;&nbsp;其他功能
 				</a>
             </div>
         </div>

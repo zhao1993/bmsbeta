@@ -7,12 +7,24 @@ import java.net.URLEncoder;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class FileUtil {
+	
+	
+	/**
+	 * springMVC 的文件上传
+	 * @param request 请求对象
+	 * @param file 需要上传的文件 
+	 * @param dir 文件目录名称
+	 * @return 返回uuid作为key 文件名作为value的oneMap对象
+	 */
+	public static OneMap<String,String> upLoadm(HttpServletRequest request,CommonsMultipartFile file,String dir){
+		return new OneMap<String, String>(FileUtil.UpLoad(request, file, dir), file.getFileItem().getName());
+	}
+	
 	/**
 	 * springMVC 的文件上传
 	 * @param request 请求对象

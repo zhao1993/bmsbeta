@@ -41,7 +41,13 @@ public interface BaseDao<T> {
 	 * @return 将结果以集合的形式返回
 	 */
 	List<T> selectAll();
-	
+	/**
+	 * 查询 column 为 value 的数据集合
+	 * @param column 类变量名
+	 * @param value 值
+	 * @return 返回符合的集合
+	 */
+	List<T> selectByColumn(String column,String value);
 	/**
 	 * 条件查询 
 	 * @param queryString 查询语句
@@ -63,6 +69,7 @@ public interface BaseDao<T> {
 	 * @return 返回符合条件的数据结果集合
 	 */
 	List<T> selectCriteria(int firstResult,int maxResult);
+	
 	/**
 	 * 查询数据条数
 	 * @return 返回对应数据总条数

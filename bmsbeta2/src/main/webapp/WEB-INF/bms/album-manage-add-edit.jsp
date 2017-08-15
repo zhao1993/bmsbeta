@@ -26,20 +26,22 @@
 			 <form id="album-form" class="form-horizontal" action="${!empty album.id?'update':'add'}" enctype="multipart/form-data" method="post">
 				<input type="hidden" name="id" value="${album.id}">
 				 <div class="form-group">
-				    <label for="album-name" class="col-xs-4 control-label">相册名称</label>
+				    <label for="album-name" class="col-xs-4 control-label">album name</label>
 				    <div class="col-xs-6">
-				      <input type="text" class="form-control" id="album-name" name="title" value="${album.title}" placeholder="风景集">
+				      <input type="text" class="form-control" id="album-name" name="title" value="${album.title}" placeholder="风景集" initvalue="${album.title}">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="album-name" class="col-xs-4 control-label">相册描述</label>
+				    <label for="album-name" class="col-xs-4 control-label">album description</label>
 				    <div class="col-xs-6">
 				      <input type="text" class="form-control" id="album-name" name="content" value="${album.content}" placeholder="相册描述">
 				    </div>
 				  </div>
 			      <div class="form-group">
-                    <input id="photos" type="file" name="file" multiple>
-                   <!--  <input id="article-pic" name="file" type="file" alt="文章配图" /> -->
+			      <label for="album-name" class="col-xs-4 control-label">photos list</label>
+				    <div class="col-xs-8">
+	                    <input id="photos" type="file" name="file" multiple data-overwrite-initial="false" data-min-file-count="1">
+				    </div>
                 </div>
 	       			<div class="form-group">
 						<button class="btn btn-default col-xs-offset-5 col-sm-offset-4 col-md-offset-5" type="submit">${!empty album.id?"保存修改":"发布"}</button>
@@ -64,20 +66,15 @@
 			            validating: 'glyphicon glyphicon-refresh'
 			        },
 			        fields:{
-			        	title:{
-			        		validators:{notEmpty:{message:"标题不能为空！"} }
-			        	},
-			        	content:{
-			        		validators:{notEmpty:{message:"相册描述不能为空!"}}
-			        	}
+			        	title:{validators:{notEmpty:{message:"标题不能为空!"},isExisted:{message:"已经存在的相册集!"} }},
+			        	content:{validators:{notEmpty:{message:"描述不能为空!"}}},
+			        	file:{validators:{notEmpty:{message:"至少上传一张图片?"}}}
 			        }
 			}); 
-			if('${photos}'!=''){
-				console.dir('${photos}');
-			}
 			var urlfix = "http://localhost:8080/bmsbeta2/album/queryimage?image=";
 			var initialPreview = new Array();
 			var initialPreviewConfig = new Array();
+			var initialCount = 0;
 			if('${album}'!=''){
 				$.ajax({
 				type:'post',
@@ -87,23 +84,21 @@
 				async:false,
 				success:function(lists){
 					 $.each(lists,function(i,photo){
-							initialPreview.push(urlfix+photo.image);
 							var config = new Object();
-							config.caption = photo.image;
+							config.caption = photo.note;
 							config.url = "deletephoto";
+							config.type = "image";
 							config.key = photo.id;
-							config.extra =function(){
-								alert('aaa');
-							}
 							initialPreviewConfig.push(config);
+							initialPreview.push(urlfix+photo.image);
+							initialCount++;
 						}); 
 					}
 				});
 			}
-			console.info(initialPreview);
-			console.info(initialPreviewConfig);
 				$("#photos").fileinput({
 			       	showBrowse:'false',
+			       	uploadUrl:'addphoto?albumid=${album.id}',
 					theme:'explorer',
 					overwriteInitial:'false',
 					language:'zh',
@@ -111,10 +106,23 @@
 					initialPreviewAsData: '${album}'==''?false:true,
 					initialPreview:initialPreview,
 			        initialPreviewConfig:initialPreviewConfig,
-					maxFileCount:10,
+			        //修改时不计算原有的图片数量 ！！！
+			        minFileCount:1,
+					maxFilesNum:10,
 					enctype:'multipart/form-data',
 					showUpload:false,
 					browseClass:'btn btn-default'
+				});
+				$("photosUpdate").fileinput({
+					overwriteInitial:'false',
+					showUpload:false,
+					initialPreviewAsData:true,
+					initialPreview:initialPreview,
+			        initialPreviewConfig:initialPreviewConfig,
+					language:'zh',
+					enctype:'multipart/form-data',
+					allowedFileExtensions:['jpg','png'],
+			        browseClass:'btn btn-default'
 				});
 			});
 		</script>
