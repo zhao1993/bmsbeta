@@ -2,7 +2,6 @@ package zhao.blog.managementsystem.controller;
 
 import java.io.File;
 import java.io.OutputStream;
-import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import zhao.blog.managementsystem.constant.Common;
-import zhao.blog.managementsystem.constant.Folder;
+import zhao.blog.managementsystem.constant.FolderAndFile;
 import zhao.blog.managementsystem.entity.Article;
 import zhao.blog.managementsystem.service.ArticleService;
 import zhao.blog.managementsystem.util.FileUtil;
@@ -39,7 +38,7 @@ public class ArticleController {
 	public ModelAndView add(Article article, @RequestParam("file") CommonsMultipartFile file,
 			HttpServletRequest request) throws Exception {
 		if (null != file.getFileItem().getString() && !"".equals(file.getFileItem().getString()))
-			article.setImage(FileUtil.UpLoad(request, file, Folder.ARTICLE_FOLDER));
+			article.setImage(FileUtil.UpLoad(request, file, FolderAndFile.ARTICLE_FOLDER));
 		else
 			//这里准备用默认文章配图路径
 			article.setImage(articleServiceImpl.selectById(article.getId()).getImage());
@@ -71,7 +70,7 @@ public class ArticleController {
 	public ModelAndView update(@ModelAttribute("form") Article article, @RequestParam("file") CommonsMultipartFile file,
 			HttpServletRequest request) throws Exception {
 		if (null != file.getFileItem().getString() && !"".equals(file.getFileItem().getString()))
-			article.setImage(FileUtil.UpLoad(request, file, Folder.ARTICLE_FOLDER));
+			article.setImage(FileUtil.UpLoad(request, file, FolderAndFile.ARTICLE_FOLDER));
 		else
 			article.setImage(articleServiceImpl.selectById(article.getId()).getImage());
 		article.setTime(articleServiceImpl.selectById(article.getId()).getTime());
@@ -95,7 +94,7 @@ public class ArticleController {
 	@RequestMapping("/queryimage")
 	public void queryImage(String image, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setHeader("content-Disposition", "filename=" + FileUtil.opDownloadFileName(image, request));
-		String realPath = FileUtil.getRealPath(Folder.ARTICLE_FOLDER, request);
+		String realPath = FileUtil.getRealPath(FolderAndFile.ARTICLE_FOLDER, request);
 		OutputStream outputStream = response.getOutputStream();
 		FileUtils.copyFile(new File(realPath, image), outputStream);
 		outputStream.close();

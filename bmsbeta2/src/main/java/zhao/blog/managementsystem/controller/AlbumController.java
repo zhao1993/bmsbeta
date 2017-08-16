@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import zhao.blog.managementsystem.constant.Common;
-import zhao.blog.managementsystem.constant.Folder;
+import zhao.blog.managementsystem.constant.FolderAndFile;
 import zhao.blog.managementsystem.entity.Album;
 import zhao.blog.managementsystem.entity.Photo;
 import zhao.blog.managementsystem.service.AlbumService;
@@ -49,12 +49,11 @@ public class AlbumController {
 			@RequestParam("file") CommonsMultipartFile[] file ) throws Exception {
 		album.setTime(DateUtil.getTime4J());
 		albumServiceImpl.save(album);
-		
-		if(file.length==0)
-			album.setImage("default.jpg");
+		Photo photo = savePhoto(request, album, file);
+		if(null==photo)
+			album.setImage("default.png");
 		else
-			album.setImage(savePhoto(request, album, file).getImage());
-		
+			album.setImage(photo.getImage());
 		albumServiceImpl.update(album);
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum", request.getSession().getAttribute("nowPage"));
@@ -62,13 +61,13 @@ public class AlbumController {
 	}
 	@ResponseBody
 	@RequestMapping("/addphoto")
-	public String asyncAddPhoto(
+	public boolean asyncAddPhoto(
 			@RequestParam("file") CommonsMultipartFile file,
 			@RequestParam("albumid") int id,
 			HttpServletRequest request
 			){
 		savePhoto(request, albumServiceImpl.selectById(id), file);
-		return new String("success");
+		return true;
 	}
 	@RequestMapping("/delete")
 	public ModelAndView delete(String ids, HttpSession session) throws Exception {
@@ -79,10 +78,9 @@ public class AlbumController {
 	}
 	@ResponseBody
 	@RequestMapping("/deletephoto")
-	public ModelAndView deletePhoto(@RequestParam("key") int photoId){
-		Album album = photoServiceImpl.selectAlbumByPhotoId(photoId);
+	public boolean deletePhoto(@RequestParam("key") int photoId){
 		photoServiceImpl.deleteById(photoId);
-		return new ModelAndView("redirect:toupdate","id",album.getId());
+		return true;
 	}
 	@RequestMapping("/toupdate")
 	public ModelAndView query4Update(int id) throws Exception {
@@ -128,7 +126,7 @@ public class AlbumController {
 	@RequestMapping("/queryimage")
 	public void queryImage(String image, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setHeader("content-Disposition", "filename=" + FileUtil.opDownloadFileName(image, request));
-		String realPath = FileUtil.getRealPath(Folder.ALBUM_FOLDER, request);
+		String realPath = FileUtil.getRealPath(FolderAndFile.ALBUM_FOLDER, request);
 		OutputStream outputStream = response.getOutputStream();
 		FileUtils.copyFile(new File(realPath, image), outputStream);
 		outputStream.close();
@@ -151,7 +149,7 @@ public class AlbumController {
 		List<Photo> photos = new ArrayList<Photo>(file.length);
 		for (CommonsMultipartFile cmFile : file) {
 			if(cmFile.getSize()>0){
-				OneMap<String, String> pn= FileUtil.upLoadm(request, cmFile, Folder.ALBUM_FOLDER);
+				OneMap<String, String> pn= FileUtil.upLoadm(request, cmFile, FolderAndFile.ALBUM_FOLDER);
 				Photo photo = new Photo(album, pn.getKey(),pn.getValue(),null,null,null,DateUtil.getTime4J());
 				photos.add(photo);
 				photoServiceImpl.save(photo);

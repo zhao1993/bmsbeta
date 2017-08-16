@@ -18,7 +18,7 @@
 	</div>
 	<div class="col-sm-8 col-md-8 col-lg-9" >
 	<div class="page-header">
-		<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<a href="mshome">后台管理</a>&nbsp;>&nbsp;<a class="retreat">相册管理</a>&nbsp;>&nbsp;相册新增&编辑
+		<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<a href="mshome">后台管理</a>&nbsp;>&nbsp;<a class="retreat">相册管理</a>&nbsp;>&nbsp;相册${empty album?'新增':'编辑'}
 	</div>
 	<!-- ckeditor -->
 		<div class="col-sm-1 col-md-1" ></div>
@@ -40,11 +40,11 @@
 			      <div class="form-group">
 			      <label for="album-name" class="col-xs-4 control-label">photos list</label>
 				    <div class="col-xs-8">
-	                    <input id="photos" type="file" name="file" multiple data-overwrite-initial="false" data-min-file-count="1">
+	                    <input id="photos" type="file" name="file" multiple data-overwrite-initial="false">
 				    </div>
                 </div>
 	       			<div class="form-group">
-						<button class="btn btn-default col-xs-offset-5 col-sm-offset-4 col-md-offset-5" type="submit">${!empty album.id?"保存修改":"发布"}</button>
+						<button class="btn btn-default col-xs-offset-5 col-sm-offset-4 col-md-offset-5" type="submit">${!empty album?"保存修改":"发布"}</button>
 					</div>
 			    </form>
 			</div>
@@ -64,13 +64,21 @@
 			            valid: 'glyphicon glyphicon-ok',
 			            invalid: 'glyphicon glyphicon-remove',
 			            validating: 'glyphicon glyphicon-refresh'
-			        },
+			        },//feedbackIcons
 			        fields:{
-			        	title:{validators:{notEmpty:{message:"标题不能为空!"},isExisted:{message:"已经存在的相册集!"} }},
-			        	content:{validators:{notEmpty:{message:"描述不能为空!"}}},
-			        	file:{validators:{notEmpty:{message:"至少上传一张图片?"}}}
-			        }
+			        	title:{
+			        	validators:{
+				        	notEmpty:{
+				        	message:"必须要有相册名!"
+				        	},
+				        	isExisted:{
+				        	message:"已经存在的相册集!"
+				        	} 
+			        	}//validators
+			         }//title
+			      }//fields
 			}); 
+			// updateData start
 			var urlfix = "http://localhost:8080/bmsbeta2/album/queryimage?image=";
 			var initialPreview = new Array();
 			var initialPreviewConfig = new Array();
@@ -96,9 +104,10 @@
 					}
 				});
 			}
+			// updateData end
 				$("#photos").fileinput({
 			       	showBrowse:'false',
-			       	uploadUrl:'addphoto?albumid=${album.id}',
+			       	uploadUrl:'${album}'==''?'':'addphoto?albumid=${album.id}',
 					theme:'explorer',
 					overwriteInitial:'false',
 					language:'zh',
@@ -106,23 +115,15 @@
 					initialPreviewAsData: '${album}'==''?false:true,
 					initialPreview:initialPreview,
 			        initialPreviewConfig:initialPreviewConfig,
-			        //修改时不计算原有的图片数量 ！！！
-			        minFileCount:1,
-					maxFilesNum:10,
 					enctype:'multipart/form-data',
 					showUpload:false,
-					browseClass:'btn btn-default'
-				});
-				$("photosUpdate").fileinput({
-					overwriteInitial:'false',
-					showUpload:false,
-					initialPreviewAsData:true,
-					initialPreview:initialPreview,
-			        initialPreviewConfig:initialPreviewConfig,
-					language:'zh',
-					enctype:'multipart/form-data',
-					allowedFileExtensions:['jpg','png'],
-			        browseClass:'btn btn-default'
+					showRemove:true,
+					maxFileSize:2048,
+					browseClass:'btn btn-default',
+					dropZoneTitle:"可以将图片拖拽到这里",
+					msgUploadEnd:"已经更新到相册",
+					msgUploadThreshold:"正在上传文件...",
+					fileActionSettings:{uploadTitle:"上传并更新"}
 				});
 			});
 		</script>
