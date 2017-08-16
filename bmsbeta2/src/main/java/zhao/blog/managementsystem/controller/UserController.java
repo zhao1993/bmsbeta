@@ -20,7 +20,7 @@ public class UserController {
 
 	@RequestMapping("/all")
 	public ModelAndView selectAll(){
-		return new ModelAndView("user-manage","userslist", userServiceImpl.selectAll());
+		return new ModelAndView("bms/user-manage","userslist", userServiceImpl.selectAll());
 	}
 	
 	@RequestMapping("/delete")
@@ -33,7 +33,7 @@ public class UserController {
 	
 	@RequestMapping("/toupdate")
 	public ModelAndView query4Update(int id){
-		return new ModelAndView("user-manage-edit","user",userServiceImpl.selectById(id));
+		return new ModelAndView("bms/user-manage-edit","user",userServiceImpl.selectById(id));
 	}
 	
 	@RequestMapping("/update")
@@ -50,7 +50,7 @@ public class UserController {
 			@RequestParam(required=false) Integer pagesize,
 			HttpSession session){
 		session.setAttribute("nowPage",null==pagenum||pagenum<1?Common.DEFAULT_PAGE_NOW:pagenum);
-		ModelAndView modelAndView = new ModelAndView("user-manage");
+		ModelAndView modelAndView = new ModelAndView("bms/user-manage");
 		modelAndView.addObject("userslist",userServiceImpl.selectByPage(pagenum, pagesize));
 		modelAndView.addObject("maxPage",userServiceImpl.allPage(pagesize));
 		return modelAndView;

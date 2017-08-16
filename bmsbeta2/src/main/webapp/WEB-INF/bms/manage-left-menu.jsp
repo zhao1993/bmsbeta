@@ -79,8 +79,8 @@
 	            <a href="#" class="list-group-item">
 					<span class="glyphicon glyphicon-plus" ></span>&nbsp;&nbsp;统计信息
 				</a>
-				<a href="#" class="list-group-item">
-					<span class="glyphicon glyphicon-edit" ></span>&nbsp;&nbsp;系统功能
+				<a href="<%=request.getContextPath()%>/blog/queryset4bms" class="list-group-item">
+					<span class="glyphicon glyphicon-edit" ></span>&nbsp;&nbsp;功能设置
 				</a>
 				<a href="#" class="list-group-item">
 					<span class="glyphicon glyphicon-trash" ></span>&nbsp;&nbsp;其他功能

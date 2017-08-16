@@ -23,7 +23,7 @@ public class DailyController {
 
 	@RequestMapping("/toadd")
 	public ModelAndView toAdd() throws Exception {
-		ModelAndView modelAndView = new ModelAndView("daily-manage-add-edit");
+		ModelAndView modelAndView = new ModelAndView("bms/daily-manage-add-edit");
 		return modelAndView;
 	}
 
@@ -67,7 +67,7 @@ public class DailyController {
 			@RequestParam(required = false) Integer pagesize,
 			HttpSession session) throws Exception {
 		session.setAttribute("nowPage", null == pagenum || pagenum < 1 ? Common.DEFAULT_PAGE_NOW : pagenum);
-		ModelAndView modelAndView = new ModelAndView("daily-manage");
+		ModelAndView modelAndView = new ModelAndView("bms/daily-manage");
 		modelAndView.addObject("dailys", dailyServiceImpl.selectByPage(pagenum, pagesize));
 		modelAndView.addObject("maxPage", dailyServiceImpl.allPage(pagesize));
 		return modelAndView;

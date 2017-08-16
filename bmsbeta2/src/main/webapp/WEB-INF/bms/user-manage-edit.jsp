@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/datetimepicker/css/bootstrap-datetimepicker.css">
 <title>user-manage</title>
-<jsp:include page="web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap/datetimepicker/js/moment-with-locales.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap/datetimepicker/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap/showpassword/bootstrap-show-password.js"></script>
@@ -97,7 +97,7 @@
 	</form>
 	</div>
 	</div><!-- close row -->
-	<jsp:include page="web-plugin-footer.jsp" />
+	<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 	<script>
     $(function() {
     	//datetimepickerSetting

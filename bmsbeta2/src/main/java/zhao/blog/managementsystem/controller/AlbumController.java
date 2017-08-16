@@ -39,7 +39,7 @@ public class AlbumController {
 	
 	@RequestMapping("/toadd")
 	public ModelAndView toAdd() throws Exception {
-		ModelAndView modelAndView = new ModelAndView("album-manage-add-edit");
+		ModelAndView modelAndView = new ModelAndView("bms/album-manage-add-edit");
 		return modelAndView;
 	}
 
@@ -84,7 +84,7 @@ public class AlbumController {
 	}
 	@RequestMapping("/toupdate")
 	public ModelAndView query4Update(int id) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("album-manage-add-edit");
+		ModelAndView modelAndView = new ModelAndView("bms/album-manage-add-edit");
 		modelAndView.addObject("album", albumServiceImpl.selectById(id));
 		return modelAndView;
 	}
@@ -117,7 +117,7 @@ public class AlbumController {
 			@RequestParam(required = false) Integer pagesize,
 			HttpSession session) throws Exception {
 		session.setAttribute("nowPage", null == pagenum || pagenum < 1 ? Common.DEFAULT_PAGE_NOW : pagenum);
-		ModelAndView modelAndView = new ModelAndView("album-manage");
+		ModelAndView modelAndView = new ModelAndView("bms/album-manage");
 		modelAndView.addObject("albums", albumServiceImpl.selectByPage(pagenum, pagesize));
 		modelAndView.addObject("maxPage", albumServiceImpl.allPage(pagesize));
 		return modelAndView;

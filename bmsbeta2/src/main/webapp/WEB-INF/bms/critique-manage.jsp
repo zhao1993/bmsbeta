@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="web-plugin-head.jsp" />
-<jsp:include page="web-plugin-head-kkpager.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-kkpager.jsp" />
 <title>critique-manage</title>
 </head>
 <body>
@@ -26,18 +26,18 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th>序号</th>
+      <th class="hidden-xs">序号</th>
       <th>留言(评论)内容</th>
-      <th>类型</th>
-      <th>时间</th>
+      <th class="hidden-sm hidden-xs">类型</th>
+      <th >时间</th>
     </tr>
   </thead>
   <tbody>
   <c:forEach items="${critiqueslist}" var="critique">
     <tr>
-      <td><span class='id'>${critique.id}</span></td>
+      <td class="hidden-xs"><span class='id'>${critique.id}</span></td>
       <td>${critique.content}</td>
-      <td>${critique.type}</td>
+      <td class="hidden-sm hidden-xs">${critique.type}</td>
       <td>${critique.time}</td>
     </tr>
   </c:forEach>
@@ -56,6 +56,6 @@
 	</div><!-- close row2 -->
 	</div>
 	</div><!-- close row -->
-		<jsp:include page="web-plugin-footer.jsp" />
+		<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 </body>
 </html>

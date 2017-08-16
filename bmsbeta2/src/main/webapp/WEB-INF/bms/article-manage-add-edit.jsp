@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="web-plugin-head.jsp" />
-<jsp:include page="web-plugin-head-fupload.jsp" />
-<jsp:include page="web-plugin-head-select.jsp" />
-<jsp:include page="web-plugin-head-validator.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-fupload.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-select.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-validator.jsp" />
 <link href="<%=request.getContextPath()%>/bootstrap/checkbox/css/awesome-bootstrap-checkbox.css" rel="stylesheet" type="text/css"/>
 <link href="<%=request.getContextPath()%>/bootstrap/checkbox/css/build.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
@@ -192,7 +192,7 @@ select::-ms-expand { display: none; }
 	<!--close ckeditor -->
 	</div>
 	</div><!-- close row -->
-		<jsp:include page="web-plugin-footer.jsp" />
+		<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 		<script>
 			$(function(){
 			//表单验证
@@ -217,7 +217,7 @@ select::-ms-expand { display: none; }
 					language:'zh',
 					allowedFileExtensions:['jpg','png'],
 					initialPreviewAsData: true,
-						initialPreview:['http://localhost:8080/bmsbeta2/article/queryimage?image=${article.image}'],
+					initialPreview:['http://localhost:8080/bmsbeta2/article/queryimage?image=${article.image}'],
 			        initialPreviewConfig: [{caption: "${article.image}"}],
 					maxFileCount:1,
 					enctype:'multipart/form-data',

@@ -28,7 +28,7 @@
     
 	 <!--视图解析-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/bms/"/>
+        <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     <!-- 配置SpringMVC文件上传解析器  -->  

@@ -1,5 +1,5 @@
 <%@page pageEncoding="UTF-8"%>
-<jsp:include page="web-plugin-head.jsp" />
+<jsp:include page="<%=request.getContextPath()%>/p4jsc/web-plugin-head.jsp" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 	<form action="${!empty daily.id?'update':'add'}" method="post" enctype="multipart/form-data">
 		<div class="row">

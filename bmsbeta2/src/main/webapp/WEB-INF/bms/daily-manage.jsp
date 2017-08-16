@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="web-plugin-head.jsp" />
-<jsp:include page="web-plugin-head-kkpager.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-kkpager.jsp" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 <title>daily-manage</title>
 </head>
@@ -73,7 +73,7 @@
 		</div><!-- close row2 -->
 	</div>
 	</div><!-- close row1 -->
-		<jsp:include page="web-plugin-footer.jsp" />
+		<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/bms-daily.js"></script>
 </body>
 </html>

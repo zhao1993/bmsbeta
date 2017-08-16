@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="web-plugin-head.jsp" />
-<jsp:include page="web-plugin-head-fupload.jsp" />
-<jsp:include page="web-plugin-head-validator.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-fupload.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-validator.jsp" />
 <title>article-manage</title>
 </head>
 <body>
 		<jsp:include page="manage-nav-bar.jsp"/>
 	<div class="row">
-	<div class="col-sm-3 col-md-3 col-lg-2" >
+	<div class="col-sm-3 col-md-3 col-lg-2">
 		<jsp:include page="manage-left-menu.jsp"/>
 	</div>
 	<div class="col-sm-8 col-md-8 col-lg-9" >
@@ -54,7 +54,7 @@
 	<!--close ckeditor -->
 	</div>
 	</div><!-- close row -->
-		<jsp:include page="web-plugin-footer.jsp" />
+		<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 		<script>
 			$(function(){
 			//表单验证
@@ -119,6 +119,7 @@
 					showUpload:false,
 					showRemove:true,
 					maxFileSize:2048,
+					maxImageWidth:100,
 					browseClass:'btn btn-default',
 					dropZoneTitle:"可以将图片拖拽到这里",
 					msgUploadEnd:"已经更新到相册",

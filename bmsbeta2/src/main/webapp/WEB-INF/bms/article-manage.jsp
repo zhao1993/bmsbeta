@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="web-plugin-head.jsp" />
-<jsp:include page="web-plugin-head-kkpager.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-kkpager.jsp" />
 <title>article-manage</title>
 </head>
 <body>
@@ -26,25 +26,25 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th>文章编号</th>
+      <th class="hidden-xs">文章编号</th>
       <th>标题</th>
-      <th>发布时间</th>
-      <th>最后编辑</th>
-      <th>分类</th>
-      <th>来源</th>
-      <th>作者</th>
+      <th class="hidden-sm hidden-xs">发布时间</th>
+      <th class="hidden-sm hidden-xs">最后编辑</th>
+      <th class="hidden-xs">分类</th>
+      <th >来源</th>
+      <th class="hidden-xs">作者</th>
     </tr>
   </thead>
   <tbody>
   <c:forEach items="${articles}" var="article">
     <tr>
-      <td><span class='id'>${article.id}</span></td>
+      <td class="hidden-xs"><span class='id'>${article.id}</span></td>
       <td>${article.title}</td>
-      <td>${article.time}</td>
-      <td>${article.finaltime}</td>
-      <td>${article.type}</td>
-      <td>${article.source eq 'original'?'原创':'转载'}</td>
-      <td>${article.editer}</td>
+      <td class="hidden-sm hidden-xs">${article.time}</td>
+      <td class="hidden-sm hidden-xs">${article.finaltime}</td>
+      <td class="hidden-xs">${article.type}</td>
+      <td >${article.source eq 'original'?'原创':'转载'}</td>
+      <td class="hidden-xs">${article.editer}</td>
     </tr>
   </c:forEach>
   </tbody>
@@ -64,6 +64,6 @@
 		</div>
 	</div>
 	</div><!-- close row -->
-		<jsp:include page="web-plugin-footer.jsp" />
+		<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 </body>
 </html>

@@ -22,7 +22,7 @@ public class CritiqueController {
 	//?????
 	@RequestMapping("/all")
 	public ModelAndView selectAll(){
-		return new ModelAndView("critique-manage","critiqueslist", critiqueServiceImpl.selectAll());
+		return new ModelAndView("bms/critique-manage","critiqueslist", critiqueServiceImpl.selectAll());
 	}
 	
 	@RequestMapping("/delete")
@@ -38,7 +38,7 @@ public class CritiqueController {
 			@RequestParam(required=false) Integer pagesize,
 			HttpSession session){
 		session.setAttribute("nowPage",null==pagenum||pagenum<1?Common.DEFAULT_PAGE_NOW:pagenum);
-		ModelAndView modelAndView = new ModelAndView("critique-manage");
+		ModelAndView modelAndView = new ModelAndView("bms/critique-manage");
 		modelAndView.addObject("critiqueslist",critiqueServiceImpl.selectByPage(pagenum, pagesize));
 		modelAndView.addObject("maxPage",critiqueServiceImpl.allPage(pagesize));
 		return modelAndView;

@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="web-plugin-head.jsp" />
-<jsp:include page="web-plugin-head-kkpager.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-kkpager.jsp" />
 <title>album-manage</title>
 </head>
 <body>
@@ -26,21 +26,21 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th>序号</th>
+      <th class="hidden-xs">序号</th>
       <th>相册集</th>
-      <th>图片数量</th>
-      <th>相册备注</th>
-      <th>创建日期</th>
+      <th class="hidden-sm hidden-xs">图片数量</th>
+      <th class="hidden-sm hidden-xs">相册备注</th>
+      <th >创建日期</th>
     </tr>
   </thead>
   <tbody>
   <c:forEach items="${albums}" var="album">
     <tr>
-      <td><span class='id'>${album.id}</span></td>
+      <td class="hidden-xs"><span class='id'>${album.id}</span></td>
       <td>${album.title}</td>
-      <td>1111</td>
-      <td>${album.content}</td>
-      <td>${album.time}</td>
+      <td class="hidden-sm hidden-xs">1111</td>
+      <td class="hidden-sm hidden-xs">${album.content}</td>
+      <td >${album.time}</td>
     </tr>
   </c:forEach>
   </tbody>
@@ -60,6 +60,6 @@
 		</div><!-- close row -->
 	</div>
 	</div><!-- close row -->
-	<jsp:include page="web-plugin-footer.jsp" />
+	<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 </body>
 </html>

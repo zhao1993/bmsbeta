@@ -19,7 +19,7 @@ public class ManagerController {
 	@RequestMapping("/login")
 	public String managerLogin(String account,String password){
 		if(managerServiceImpl.login(account, password)==ManagerState.SUCCESS){
-			return "user-manage";
+			return "bms/user-manage";
 		}
 		return "manage-login";
 	}

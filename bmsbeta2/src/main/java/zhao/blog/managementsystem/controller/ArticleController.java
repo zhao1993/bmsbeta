@@ -29,7 +29,7 @@ public class ArticleController {
 
 	@RequestMapping("/toadd")
 	public ModelAndView toAdd() throws Exception {
-		ModelAndView modelAndView = new ModelAndView("article-manage-add-edit");
+		ModelAndView modelAndView = new ModelAndView("bms/article-manage-add-edit");
 		modelAndView.addObject("types", articleServiceImpl.queryType());
 		return modelAndView;
 	}
@@ -60,7 +60,7 @@ public class ArticleController {
 
 	@RequestMapping("/toupdate")
 	public ModelAndView query4Update(int id) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("article-manage-add-edit");
+		ModelAndView modelAndView = new ModelAndView("bms/article-manage-add-edit");
 		modelAndView.addObject("types", articleServiceImpl.queryType());
 		modelAndView.addObject("article", articleServiceImpl.selectById(id));
 		return modelAndView;
@@ -85,7 +85,7 @@ public class ArticleController {
 	public ModelAndView query(@RequestParam(required = false) Integer pagenum,
 			@RequestParam(required = false) Integer pagesize, HttpSession session) throws Exception {
 		session.setAttribute("nowPage", null == pagenum || pagenum < 1 ? Common.DEFAULT_PAGE_NOW : pagenum);
-		ModelAndView modelAndView = new ModelAndView("article-manage");
+		ModelAndView modelAndView = new ModelAndView("bms/article-manage");
 		modelAndView.addObject("articles", articleServiceImpl.selectByPage(pagenum, pagesize));
 		modelAndView.addObject("maxPage", articleServiceImpl.allPage(pagesize));
 		return modelAndView;

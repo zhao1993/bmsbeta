@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="web-plugin-head.jsp" />
-<jsp:include page="web-plugin-head-kkpager.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head.jsp" />
+<jsp:include page="../p4jsc/web-plugin-head-kkpager.jsp" />
 <title>user-manage</title>
 </head>
 <body>
@@ -26,19 +26,23 @@
 		<table class="table table-bordered table-hover">
 		  <thead>
 		    <tr>
-		      <th>用户ID</th>
+		      <th class="hidden-xs">用户ID</th>
 		      <th>名称</th>
 		      <th>账号</th>
-		      <th>创建日期</th>
+		      <th class="hidden-sm hidden-xs">联系方式</th>
+		      <th class="hidden-sm hidden-xs">主页</th>
+		      <th class="hidden-xs">创建日期</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		  <c:forEach items="${userslist}" var="user">
 		    <tr>
-		      <td><span class="id">${user.id}</span></td>
+		      <td class="hidden-xs"><span class="id">${user.id}</span></td>
 		      <td>${user.name}</td>
 		      <td>${user.account}</td>
-		      <td>${user.createdate}</td>
+		      <td class="hidden-sm hidden-xs">${user.contact}</td>
+		      <td class="hidden-sm hidden-xs">${user.homepage}</td>
+		      <td class="hidden-xs">${user.createdate}</td>
 		    </tr>
 		  </c:forEach>
 		  </tbody>
@@ -57,6 +61,6 @@
 		</div><!-- close row2 -->
 		</div>
 		</div><!-- close row -->
-	<jsp:include page="web-plugin-footer.jsp" />
+	<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 </body>
 </html>
