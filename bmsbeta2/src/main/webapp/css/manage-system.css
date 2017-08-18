@@ -1,4 +1,11 @@
 @CHARSET "UTF-8";
+	/* 禁止文本选中 */
+	body{
+		-webkit-user-select:none;
+		 -moz-user-select:none;
+		  -ms-user-select:none; 
+		  user-select:none;
+	}
 	/*左侧菜单宽度限制*/
 	.panel-group{width:200px;} 
  	/*左侧菜单颜色及下划线*/

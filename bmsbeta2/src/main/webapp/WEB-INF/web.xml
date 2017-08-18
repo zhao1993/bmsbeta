@@ -41,6 +41,7 @@
     <url-pattern>/css/*</url-pattern>
     <url-pattern>/ckeditor/*</url-pattern>
     <url-pattern>/bootstrap/*</url-pattern>
+    <url-pattern>/image/*</url-pattern>
   </servlet-mapping>
   <!--解决springmvc传递给后台的中文数据乱码问题-->
   <filter>

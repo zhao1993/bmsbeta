@@ -17,4 +17,8 @@ public class BlogController {
 	public ModelAndView querySet4bui() throws Exception{
 		return new ModelAndView("bms");
 	}
+	@RequestMapping("/index")
+	public ModelAndView index() throws Exception{
+		return new ModelAndView("bui/index");
+	}
 }
