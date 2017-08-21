@@ -10,11 +10,11 @@
 			}
 			$.ajax({
 					type:'post',
-					url:'alreadyexisted',
-					data:{ajaxParam:value},
+					url:'alreadyexisted',//验证地址
+					data:{ajaxParam:value},//携带值
 					dataType:'json',
 					async:false,
-					success:function(data){
+					success:function(data){//返回false/true
 						bl = data;
 					}
 				});
