@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../p4jsc/web-plugin-head.jsp"/>
-<jsp:include page="../p4jsc/web-plugin-head4dui.jsp"/>
+<jsp:include page="../p4jsc/web-plugin-head4bui.jsp"/>
+<jsp:include page="../p4jsc/web-plugin-head-kkpager.jsp"/>
 <title>index</title>
 </head>
 <body>
@@ -82,17 +83,17 @@
 			</div>
 				</c:forEach>
 			<!-- /最新最热 -->
+			<!-- 分页 -->
+				<kkpager data-page="2" data-max="10">
+					<div id="kkpager"></div>  
+			<!-- /分页 -->
 		</div>
 		<div class="aside-div col-xs-0 col-sm-0 col-md-0 col-lg-3">
 			<jsp:include page="aside.jsp"/>
 		</div>
 	</div>
 </div>
-<jsp:include page="../p4jsc/web-plugin-footer4dui.jsp" />
-<script type="text/javascript">
-	$(function(){
-		$('#Carousel').carousel('cycle');
-	})
-</script>
+<jsp:include page="../p4jsc/web-plugin-footer4bui.jsp" />
+<jsp:include page="../p4jsc/web-plugin-index.jsp" />
 </body>
 </html>
