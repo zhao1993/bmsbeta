@@ -54,7 +54,7 @@ a:hover{ text-decoration: none; color:blue; }
 #topbar:hover{ box-shadow: 1px 1px 4px -1px whitesmoke; background: #C1C1C1; }
 /* 下划线标题 */
 p.htitle{ /* 谨慎修改 */ font-size:20px; padding-bottom:.1em; border-bottom:3px solid #eee; }
-p.htitle *{ padding-bottom:.3em; border-bottom:3px solid #0000ff; }
+p.htitle span:first-child{ padding-bottom:.3em; border-bottom:3px solid #0000ff; }
 
 /* 栅格系统容器、间距等响应布局的的尺寸重新调整 */
  @media (min-width: 1366px) { .container { width: 1280px; } }

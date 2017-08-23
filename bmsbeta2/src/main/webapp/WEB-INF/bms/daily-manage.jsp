@@ -12,8 +12,9 @@
 </head>
 <body>
 		<jsp:include page="manage-nav-bar.jsp"/>
+		<div class="container">
 		<div class="row"> 
-	<div class="col-sm-3 col-md-3 col-lg-2" >
+	<div class="col-sm-4 col-md-4 col-lg-3" >
 		<jsp:include page="manage-left-menu.jsp"/>
 	</div>
 		<div class="col-sm-8 col-md-8 col-lg-9" >
@@ -46,11 +47,11 @@
 				<form id="daily-edit-form" action="" method="post" enctype="multipart/form-data">
 				<input name="id" type="hidden" value="">
 					<div class="row">
-						<div class="col-sm-9 col-md-10" >
+						<div class="col-sm-9 col-md-9" >
 							<textarea id='content' name='content'></textarea>
 							<script type="text/javascript">CKEDITOR.replace('content');</script>
 						</div><!--close ckeditor -->
-						<div class="col-sm-1 col-md-2" >
+						<div class="col-sm-3 col-md-3" >
 							<button type="submit" class="btn btn-info col-xs-offset-5 col-sm-offset-2 col-md-offset-5">提交</button>
 							<button id="exit-btn" class="btn btn-default col-xs-offset-5 col-sm-offset-2 col-md-offset-5">退出</button>			
 						</div>
@@ -73,6 +74,7 @@
 		</div><!-- close row2 -->
 	</div>
 	</div><!-- close row1 -->
+	</div>
 		<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 		<script type="text/javascript" src="<%=request.getContextPath()%>/js/bms-daily.js"></script>
 </body>

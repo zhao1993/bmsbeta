@@ -21,13 +21,13 @@ public class DailyController {
 	@Resource
 	private DailyService dailyServiceImpl;
 
-	@RequestMapping("/toadd")
+	@RequestMapping("/bms/toadd")
 	public ModelAndView toAdd() throws Exception {
 		ModelAndView modelAndView = new ModelAndView("bms/daily-manage-add-edit");
 		return modelAndView;
 	}
 
-	@RequestMapping("/add")
+	@RequestMapping("/bms/add")
 	public ModelAndView add(Daily daily,HttpServletRequest request) throws Exception {
 		daily.setTime(DateUtil.getTime4J());
 		dailyServiceImpl.save(daily);
@@ -36,7 +36,7 @@ public class DailyController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/delete")
+	@RequestMapping("/bms/delete")
 	public ModelAndView delete(String ids, HttpSession session) throws Exception {
 		dailyServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
@@ -45,12 +45,12 @@ public class DailyController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/toupdate")
+	@RequestMapping("/bms/toupdate")
 	public Daily query4Update(int id) throws Exception {
 		return dailyServiceImpl.selectById(id);
 	}
 
-	@RequestMapping("/update")
+	@RequestMapping("/bms/update")
 	public ModelAndView update(
 			@ModelAttribute("form") Daily daily,
 			HttpServletRequest request) throws Exception {
@@ -61,7 +61,7 @@ public class DailyController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/query")
+	@RequestMapping("/bms/query")
 	public ModelAndView query(
 			@RequestParam(required = false) Integer pagenum,
 			@RequestParam(required = false) Integer pagesize,

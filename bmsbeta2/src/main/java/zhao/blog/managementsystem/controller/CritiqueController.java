@@ -1,15 +1,19 @@
 package zhao.blog.managementsystem.controller;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import zhao.blog.managementsystem.constant.Common;
+import zhao.blog.managementsystem.entity.Critique;
 import zhao.blog.managementsystem.service.CritiqueService;
 import zhao.blog.managementsystem.util.Parser;
 
@@ -18,21 +22,20 @@ import zhao.blog.managementsystem.util.Parser;
 public class CritiqueController {
 	@Resource
 	private CritiqueService critiqueServiceImpl;
-
-	//?????
-	@RequestMapping("/all")
+	
+	@RequestMapping("/bms/all")
 	public ModelAndView selectAll(){
 		return new ModelAndView("bms/critique-manage","critiqueslist", critiqueServiceImpl.selectAll());
 	}
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/bms/delete")
 	public ModelAndView delete(String ids,HttpSession session){
 		critiqueServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
 		modelAndView.addObject("pagenum",session.getAttribute("nowPage"));
 		return modelAndView;
 	}
-	@RequestMapping("/query")
+	@RequestMapping("/bms/query")
 	public ModelAndView query(
 			@RequestParam(required=false) Integer pagenum,
 			@RequestParam(required=false) Integer pagesize,
@@ -42,5 +45,14 @@ public class CritiqueController {
 		modelAndView.addObject("critiqueslist",critiqueServiceImpl.selectByPage(pagenum, pagesize));
 		modelAndView.addObject("maxPage",critiqueServiceImpl.allPage(pagesize));
 		return modelAndView;
+	}
+	
+	/*前端请求用*/
+	@ResponseBody
+	@RequestMapping("/initreply4bui")
+	public List<Critique> init(Object data,
+			@RequestParam(required=false) Integer pagenum,
+			@RequestParam(required=false) Integer pagesize){
+		return critiqueServiceImpl.selectByPage(pagenum, pagesize);
 	}
 }

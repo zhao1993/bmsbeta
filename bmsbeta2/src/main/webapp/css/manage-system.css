@@ -18,3 +18,5 @@
  	.table-tr-select{background-color: #EEE;}
  	/*面板的内容内边距*/
  	.panel-body-custom {padding-bottom:0px; padding-top: 0px; }
+ 	/*调整响应*/
+ 	 @media (min-width: 1366px) { .container { width: 1280px; } }

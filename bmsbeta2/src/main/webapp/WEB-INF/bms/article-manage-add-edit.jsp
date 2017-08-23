@@ -40,8 +40,9 @@ select::-ms-expand { display: none; }
 </head>
 <body>
 		<jsp:include page="manage-nav-bar.jsp"/>
+		<div class="container">
 	<div class="row">
-	<div class="col-sm-3 col-md-3 col-lg-2" >
+	<div class="col-sm-4 col-md-4 col-lg-3" >
 		<jsp:include page="manage-left-menu.jsp"/>
 	</div>
 	<div class="col-sm-8 col-md-8 col-lg-9" >
@@ -192,6 +193,7 @@ select::-ms-expand { display: none; }
 	<!--close ckeditor -->
 	</div>
 	</div><!-- close row -->
+	</div>
 		<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 		<script>
 			$(function(){

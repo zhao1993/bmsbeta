@@ -37,13 +37,13 @@ public class AlbumController {
 	@Resource
 	private PhotoService photoServiceImpl; 
 	
-	@RequestMapping("/toadd")
+	@RequestMapping("/bms/toadd")
 	public ModelAndView toAdd() throws Exception {
 		ModelAndView modelAndView = new ModelAndView("bms/album-manage-add-edit");
 		return modelAndView;
 	}
 
-	@RequestMapping("/add")
+	@RequestMapping("/bms/add")
 	public ModelAndView add(HttpServletRequest request,
 			Album album, 
 			@RequestParam("file") CommonsMultipartFile[] file ) throws Exception {
@@ -60,7 +60,7 @@ public class AlbumController {
 		return modelAndView;
 	}
 	@ResponseBody
-	@RequestMapping("/addphoto")
+	@RequestMapping("/bms/addphoto")
 	public boolean asyncAddPhoto(
 			@RequestParam("file") CommonsMultipartFile file,
 			@RequestParam("albumid") int id,
@@ -69,7 +69,7 @@ public class AlbumController {
 		savePhoto(request, albumServiceImpl.selectById(id), file);
 		return true;
 	}
-	@RequestMapping("/delete")
+	@RequestMapping("/bms/delete")
 	public ModelAndView delete(String ids, HttpSession session) throws Exception {
 		albumServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
@@ -77,18 +77,18 @@ public class AlbumController {
 		return modelAndView;
 	}
 	@ResponseBody
-	@RequestMapping("/deletephoto")
+	@RequestMapping("/bms/deletephoto")
 	public boolean deletePhoto(@RequestParam("key") int photoId){
 		photoServiceImpl.deleteById(photoId);
 		return true;
 	}
-	@RequestMapping("/toupdate")
+	@RequestMapping("/bms/toupdate")
 	public ModelAndView query4Update(int id) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("bms/album-manage-add-edit");
 		modelAndView.addObject("album", albumServiceImpl.selectById(id));
 		return modelAndView;
 	}
-	@RequestMapping("/update")		
+	@RequestMapping("/bms/update")		
 	public ModelAndView update(
 			@ModelAttribute("form") Album album, 
 			@RequestParam("file") CommonsMultipartFile[] file,
@@ -102,7 +102,7 @@ public class AlbumController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/queryphotos")
+	@RequestMapping("/bms/queryphotos")
 	public List<Map<String, Object>> queryPhotosByAlbumId(int id){
 		List<Map<String,Object>> arrayList = new ArrayList<Map<String,Object>>();
 		List<Photo> list = photoServiceImpl.selectPhotosByAlbumId(id);
@@ -111,7 +111,7 @@ public class AlbumController {
 		}
 		return arrayList;
 	}
-	@RequestMapping("/query")
+	@RequestMapping("/bms/query")
 	public ModelAndView query(
 			@RequestParam(required = false) Integer pagenum,
 			@RequestParam(required = false) Integer pagesize,
@@ -123,7 +123,7 @@ public class AlbumController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/queryimage")
+	@RequestMapping("/bms/queryimage")
 	public void queryImage(String image, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setHeader("content-Disposition", "filename=" + FileUtil.opDownloadFileName(image, request));
 		String realPath = FileUtil.getRealPath(FolderAndFile.ALBUM_FOLDER, request);
@@ -133,7 +133,7 @@ public class AlbumController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/alreadyexisted")
+	@RequestMapping("/bms/alreadyexisted")
 	public boolean alreayIsExisted(@RequestParam("ajaxParam") Object ajaxParam) throws Exception{
 	 	 return  albumServiceImpl.hasAlbumName(String.valueOf(ajaxParam));
 	}

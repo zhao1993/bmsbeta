@@ -1,1 +1,24 @@
 @CHARSET "UTF-8";
+p.article-title{
+	font: 18px blod;
+	text-align: center;
+}
+
+.article-content{
+	text-indent: 2em;
+	-webkit-user-select:text; -moz-user-select:text; -ms-user-select:text; user-select:text;
+}
+.article-info{
+	text-align: center;
+	letter-spacing: .1em;
+}
+.article-prenext,.article-info{
+	margin:20px 0px;
+	font: 16px bold;
+	background:#FCFCFC;
+	outline: 1px dotted #DDD;
+	padding: .5em;
+}
+.article-prenext a{
+	text-indent:2em;
+}

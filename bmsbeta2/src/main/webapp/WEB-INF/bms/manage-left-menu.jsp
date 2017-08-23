@@ -5,7 +5,7 @@
 <div class="panel-group" style="margin-left:20px">
 <div class="panel panel-default">
         <div class="panel-heading">
-			<a href="<%=request.getContextPath()%>/user/query">
+			<a href="<%=request.getContextPath()%>/user/bms/query">
 	            <span class="panel-title">
 	               	<span class="glyphicon glyphicon-user" ></span>&nbsp;&nbsp;用户管理
 	            </span>
@@ -14,7 +14,7 @@
     </div>
     <div class="panel panel-default">
      <div class="panel-heading">
-			<a href="<%=request.getContextPath()%>/article/query">
+			<a href="<%=request.getContextPath()%>/article/bms/query">
 	            <span class="panel-title">
 	               	<span class="glyphicon glyphicon-book" ></span>&nbsp;&nbsp;文章管理
 	            </span>
@@ -23,7 +23,7 @@
     </div>
     <div class="panel panel-default">
      <div class="panel-heading">
-				<a href="<%=request.getContextPath()%>/daily/query">
+				<a href="<%=request.getContextPath()%>/daily/bms/query">
 		            <span class="panel-title">
 		               	<span class="glyphicon glyphicon-pencil" ></span>&nbsp;&nbsp;日志管理
 		            </span>
@@ -32,7 +32,7 @@
     </div>
     <div class="panel panel-default">
     <div class="panel-heading">
-				<a href="<%=request.getContextPath()%>/album/query">
+				<a href="<%=request.getContextPath()%>/album/bms/query">
 		            <span class="panel-title">
 		               	<span class="glyphicon glyphicon-picture" ></span>&nbsp;&nbsp;相册管理
 		            </span>
@@ -41,7 +41,7 @@
     </div>
     <div class="panel panel-default">
     <div class="panel-heading">
-				<a href="<%=request.getContextPath()%>/critique/query">
+				<a href="<%=request.getContextPath()%>/critique/bms/query">
 		            <span class="panel-title">
 		               	<span class="glyphicon glyphicon-comment" ></span>&nbsp;&nbsp;留言(评论)管理
 		            </span>

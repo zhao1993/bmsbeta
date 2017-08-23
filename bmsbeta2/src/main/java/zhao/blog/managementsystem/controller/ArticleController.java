@@ -27,14 +27,14 @@ public class ArticleController {
 	@Resource
 	private ArticleService articleServiceImpl;
 
-	@RequestMapping("/toadd")
+	@RequestMapping("/bms/toadd")
 	public ModelAndView toAdd() throws Exception {
 		ModelAndView modelAndView = new ModelAndView("bms/article-manage-add-edit");
 		modelAndView.addObject("types", articleServiceImpl.queryType());
 		return modelAndView;
 	}
 
-	@RequestMapping("/add")
+	@RequestMapping("/bms/add")
 	public ModelAndView add(Article article, @RequestParam("file") CommonsMultipartFile file,
 			HttpServletRequest request) throws Exception {
 		if (null != file.getFileItem().getString() && !"".equals(file.getFileItem().getString()))
@@ -50,7 +50,7 @@ public class ArticleController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/delete")
+	@RequestMapping("/bms/delete")
 	public ModelAndView delete(String ids, HttpSession session) throws Exception {
 		articleServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
@@ -58,7 +58,7 @@ public class ArticleController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/toupdate")
+	@RequestMapping("/bms/toupdate")
 	public ModelAndView query4Update(int id) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("bms/article-manage-add-edit");
 		modelAndView.addObject("types", articleServiceImpl.queryType());
@@ -66,7 +66,7 @@ public class ArticleController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/update")
+	@RequestMapping("/bms/update")
 	public ModelAndView update(@ModelAttribute("form") Article article, @RequestParam("file") CommonsMultipartFile file,
 			HttpServletRequest request) throws Exception {
 		if (null != file.getFileItem().getString() && !"".equals(file.getFileItem().getString()))
@@ -81,7 +81,7 @@ public class ArticleController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/query")
+	@RequestMapping("/bms/query")
 	public ModelAndView query(@RequestParam(required = false) Integer pagenum,
 			@RequestParam(required = false) Integer pagesize, HttpSession session) throws Exception {
 		session.setAttribute("nowPage", null == pagenum || pagenum < 1 ? Common.DEFAULT_PAGE_NOW : pagenum);
@@ -91,7 +91,7 @@ public class ArticleController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/queryimage")
+	@RequestMapping("/bms/queryimage")
 	public void queryImage(String image, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setHeader("content-Disposition", "filename=" + FileUtil.opDownloadFileName(image, request));
 		String realPath = FileUtil.getRealPath(FolderAndFile.ARTICLE_FOLDER, request);

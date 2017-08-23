@@ -14,6 +14,7 @@ public class Critique implements java.io.Serializable {
 	private Critique critique;
 	private User user;
 	private Integer articleId;
+	private Integer praise;
 	private String content;
 	private Date time;
 	private String type;
@@ -29,11 +30,12 @@ public class Critique implements java.io.Serializable {
 		this.type = type;
 	}
 
-	public Critique(Critique critique, User user, Integer articleId, String content, Date time, String type,
+	public Critique(Critique critique, User user, Integer articleId, Integer praise, String content, Date time, String type,
 			String notice, Set critiques) {
 		this.critique = critique;
 		this.user = user;
 		this.articleId = articleId;
+		this.praise = praise;
 		this.content = content;
 		this.time = time;
 		this.type = type;
@@ -71,6 +73,14 @@ public class Critique implements java.io.Serializable {
 
 	public void setArticleId(Integer articleId) {
 		this.articleId = articleId;
+	}
+	
+	public Integer getPraise() {
+		return praise;
+	}
+	
+	public void setPraise(Integer praise) {
+		this.praise = praise;
 	}
 
 	public String getContent() {

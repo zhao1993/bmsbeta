@@ -18,12 +18,12 @@ public class UserController {
 	@Resource
 	private UserService userServiceImpl;
 
-	@RequestMapping("/all")
+	@RequestMapping("/bms/all")
 	public ModelAndView selectAll(){
 		return new ModelAndView("bms/user-manage","userslist", userServiceImpl.selectAll());
 	}
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/bms/delete")
 	public ModelAndView delete(String ids,HttpSession session){
 		userServiceImpl.deleteByIds(Parser.str2IntL(ids, "-"));
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
@@ -31,12 +31,12 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/toupdate")
+	@RequestMapping("/bms/toupdate")
 	public ModelAndView query4Update(int id){
 		return new ModelAndView("bms/user-manage-edit","user",userServiceImpl.selectById(id));
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/bms/update")
 	public ModelAndView update(@ModelAttribute("form") User user,HttpSession session){
 		userServiceImpl.update(user);
 		ModelAndView modelAndView = new ModelAndView("redirect:query");
@@ -44,7 +44,7 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/query")
+	@RequestMapping("/bms/query")
 	public ModelAndView query(
 			@RequestParam(required=false) Integer pagenum,
 			@RequestParam(required=false) Integer pagesize,

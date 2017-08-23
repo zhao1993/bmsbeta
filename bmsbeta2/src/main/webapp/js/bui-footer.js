@@ -10,7 +10,7 @@ $(function(){
 	var topbar = window.document.getElementById("topbar");
 	go_top = function(){
 		var start = window.setInterval(function() {
-			window.scrollBy(0, -26);
+			window.scrollBy(0, -36);
 			if(window.scrollY<=0){
 				window.clearInterval(start);
 			}

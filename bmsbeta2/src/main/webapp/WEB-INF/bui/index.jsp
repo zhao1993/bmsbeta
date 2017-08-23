@@ -62,7 +62,7 @@
 					<div class="col-xs-7 col-sm-7 col-md-8">
 						<dl>
 							<dt class="article-title">
-								<a href="..">这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题</a>
+								<a href="test?url=bui/article">这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题</a>
 							</dt>
 							<dd class="article-tag">
 								<span class="label label-default">资源分享</span>

@@ -11,10 +11,11 @@
 </head>
 <body>
 		<jsp:include page="manage-nav-bar.jsp"/>
+		<div class="container">
 		<div class="row"> 
-	<div class="col-sm-3 col-md-3 col-lg-2" >
-		<jsp:include page="manage-left-menu.jsp"/>
-	</div>
+			<div class="col-sm-4 col-md-4 col-lg-3" >
+				<jsp:include page="manage-left-menu.jsp"/>
+			</div>
 		<div class="col-sm-8 col-md-8 col-lg-9" >
 		<div class="page-header">
 			<span class="glyphicon glyphicon-map-marker"></span>&nbsp;<a class="mshome">后台管理</a>&nbsp;>&nbsp;相册管理
@@ -60,6 +61,7 @@
 		</div><!-- close row -->
 	</div>
 	</div><!-- close row -->
+	</div>
 	<jsp:include page="../p4jsc/web-plugin-footer.jsp" />
 </body>
 </html>
