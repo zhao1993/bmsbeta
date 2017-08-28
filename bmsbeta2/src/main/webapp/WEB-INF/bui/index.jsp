@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../p4jsc/web-plugin-head.jsp"/>
 <jsp:include page="../p4jsc/web-plugin-head4bui.jsp"/>
@@ -28,13 +33,13 @@
 			    <!-- 轮播（Carousel）项目 -->
 			    <div class="carousel-inner">
 			        <div class="item active">
-			            <img src="../image/q1.jpg" >
+			            <img src="${basePath}image/q1.jpg" >
 			        </div>
 			        <div class="item">
-			            <img src="../image/q2.jpg" >
+			            <img src="${basePath}image/q2.jpg" >
 			        </div>
 			        <div class="item">
-			            <img src="../image/q3.jpg" >
+			            <img src="${basePath}image/q3.jpg" >
 			        </div>
 			    </div>
 			    <!-- 轮播（Carousel）导航 -->
@@ -55,14 +60,14 @@
 				<div class="articlelists row">			
 					<!-- 配图结构 -->
 					<div class="col-xs-5 col-sm-5 col-md-4">
-						<img class="article-pic" src="../image/p1.jpg" alt="这里是文章配图"/>
+						<img class="article-pic" src="${basePath}image/p1.jpg" alt="这里是文章配图"/>
 					</div>
 					<!-- /配图结构 -->
 					<!-- 标题内容摘要与信息 -->
 					<div class="col-xs-7 col-sm-7 col-md-8">
 						<dl>
 							<dt class="article-title">
-								<a href="test?url=bui/article">这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题</a>
+								<a href="${basePath}blog/bui/test?url=bui/article">这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题</a>
 							</dt>
 							<dd class="article-tag">
 								<span class="label label-default">资源分享</span>

@@ -55,8 +55,8 @@ public interface BaseService<T> {
 	 * @param pagesize 每页显示条数
 	 * @return 符合条件的结果集合
 	 */
-	List<T> selectByPage(Integer pagenum,Integer pagesize);
-	
+	List<T> select4Page(Integer pagenum,Integer pagesize);
+
 	/**
 	 * 
 	 * @return 数据总数量

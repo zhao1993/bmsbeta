@@ -118,7 +118,7 @@ public class AlbumController {
 			HttpSession session) throws Exception {
 		session.setAttribute("nowPage", null == pagenum || pagenum < 1 ? Common.DEFAULT_PAGE_NOW : pagenum);
 		ModelAndView modelAndView = new ModelAndView("bms/album-manage");
-		modelAndView.addObject("albums", albumServiceImpl.selectByPage(pagenum, pagesize));
+		modelAndView.addObject("albums", albumServiceImpl.select4Page(pagenum, pagesize));
 		modelAndView.addObject("maxPage", albumServiceImpl.allPage(pagesize));
 		return modelAndView;
 	}

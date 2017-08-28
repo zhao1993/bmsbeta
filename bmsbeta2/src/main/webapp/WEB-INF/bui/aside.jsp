@@ -21,7 +21,7 @@
 		<ul class="hot">
 		<c:forEach begin="1" step="1" end="4" var="i">
 	        <li><a href="index.html">
-	        		<span class="pic"><img src="../image/p1.jpg"/></span>
+	        		<span class="pic"><img src="${basePath}image/p1.jpg"/></span>
 	        		<span class="text article-content">这里是文章标题、这里是文章标题这里是文章标题、这里是文章标题</span>
 	        		<span class="eyes">阅读量(999)</span>
 	        	</a>
@@ -32,7 +32,7 @@
 	<ul class="hot">
 		<c:forEach begin="1" step="1" end="4" var="i">
 	        <li><a href="index.html">
-	        		<span class="pic"><img src="../image/p1.jpg"/></span>
+	        		<span class="pic"><img src="${basePath}image/p1.jpg"/></span>
 	        		<span class="text">这里是文章标题、这里是文章标题</span>
 	        		<span class="eyes">阅读量(999)</span>
 	        	</a>
@@ -43,7 +43,7 @@
 	<ul class="hot">
 		<c:forEach begin="1" step="1" end="4" var="i">
 	        <li><a href="index.html">
-	        		<span class="pic"><img src="../image/p1.jpg"/></span>
+	        		<span class="pic"><img src="${basePath}image/p1.jpg"/></span>
 	        		<span class="text">这里是文章标题、这里是文章标题</span>
 	        		<span class="eyes">阅读量(999)</span>
 	        	</a>

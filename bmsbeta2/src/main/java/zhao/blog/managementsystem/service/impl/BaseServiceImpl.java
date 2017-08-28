@@ -116,24 +116,20 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	 * @see zhao.blog.managementsystem.service.BaseService#selectByPage(java.lang.Integer, java.lang.Integer)
 	 */
 	@Override
-	public List<T> selectByPage(Integer pagenum, Integer pagesize) {
+	public List<T> select4Page(Integer pagenum, Integer pagesize) {
 		if(null==pagesize || pagesize<1){
-			logger.warn(new StringBuffer("pagesize得到的值是[").append(pagesize).append("] 它不是一个合法的显示量参数,请修改"));
 			pagesize = Common.DEFAULT_PAGE_SIZE;
 		}
 		int all_page = this.allPage(pagesize);
 		if(null==pagenum || pagenum<1){
-			logger.warn(new StringBuffer("pagenum得到的值是[").append(pagenum).append("] 它不是一个合法的起始页参数,请修改"));
 			pagenum = Common.DEFAULT_PAGE_NOW;
 		}
 		if(all_page < pagenum){
-			logger.warn(new StringBuffer("得到的页码数超过数据库的实际页码数得到-->").append(pagenum).append("实际-->").append(all_page));
 			pagenum = all_page;
 		}
 		if(all_page==0)
 		return null;
-		logger.debug(new StringBuffer("正在以每页[").append(pagesize).append("]个数据显示量 查询第[").append(pagenum).append("]页的数据"));
-		return baseDaoImpl.selectCriteria((pagenum-1)*pagesize,pagesize);
+		return baseDaoImpl.select4Page((pagenum-1)*pagesize,pagesize);
 	}
 	
 }

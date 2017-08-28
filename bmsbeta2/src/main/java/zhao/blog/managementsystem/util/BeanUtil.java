@@ -26,7 +26,6 @@ public class BeanUtil {
 						.append(ex.substring(0,1).toUpperCase())
 						.append(ex.substring(1)).toString()
 						.equals(method_name)){
-					
 				}
 			}
 			if(method_name.startsWith("get") && !BeanUtil.inArray(method_name, excluding)){

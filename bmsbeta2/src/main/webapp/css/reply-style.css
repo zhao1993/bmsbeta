@@ -1,0 +1,209 @@
+@CHARSET "UTF-8";
+/*评论插件样式?*/
+/* 整个容器 */
+ .reply_container{
+ 	outline:1px dotted #DDD;
+ 	background: #FCFCFC;
+ 	width:100%;
+ 	border-radius: 3px;
+ 	margin:25px 0px;
+ 	-webkit-user-select:text;
+ 	 -moz-user-select:text; 
+ 	 -ms-user-select:text; 
+ 	 user-select:text;
+}
+/**************整体部分**************/
+/* 显示评论框 */
+.critique-lists{
+	border-bottom:1px dotted #DDD;
+ 	background: #FCFCFA;
+ 	width:100%;
+ 	border-radius: 2px;
+ 	margin:2px 1px;
+ 	min-height: 128px;
+    overflow: auto;
+}
+.critique-lists-d{
+	border-top:1px dotted #DDD;
+ 	background: #FCFCFA;
+ 	border-radius: 1px;
+ 	margin:2px 1px;
+ 	min-height: 108px;
+    overflow: auto;
+}
+.critique-lists-d:hover{
+	background: #FAFAF8;
+}
+/* 输入框 */
+ .reply_container div.base-box{
+ 	width: 100%;
+	padding: 10px 5px;
+	border-radius: 3px;
+	overflow: auto;
+ }
+ .reply_container div.input-box{
+ 	width: 100%;
+	height: 75%;
+	padding: 2px;
+	border-top-left-radius:6px;
+	border-top-right-radius:6px;
+	border: 1px solid #DFDFDF;
+ }
+ .reply_container div.input-box textarea{
+	width: 100%;
+	height: 100%;
+	resize: none;
+	padding: 10px;
+	border: none;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: left;
+	line-height: normal;
+ }
+ .reply_container div.fun-bar{
+ 	width: 100%;
+	height: 25%;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	padding-left: 20px;
+	border: 1px solid #DFDFDF;
+	border-top: 0px;
+ }
+ div.fun-bar a.fun-bar-face{
+ 	text-decoration:none;
+ 	float: left;
+ }
+ div.fun-bar a.fun-bar-reply{
+	float: right;
+	width: 60px;
+	height: 100%;
+	border-left: 1px solid #EEEEEE;
+	border-bottom-right-radius: 6px;
+	text-align: center;
+	text-decoration:none;
+	line-height: -moz-block-height;
+	line-height: -webkit-block-height;
+	line-height: block-height;
+ }
+ div.fun-bar a.fun-bar-reply:hover{
+ 	background: #e2baef;
+ }
+ /* 表情部分 */
+ div.face-panel{
+ 	width: 336px;
+ 	z-index: 1009;
+ 	background: #FCFAFA;
+ 	padding: 10px;
+ 	border: 1px solid #EEEEEE;
+ 	border-radius: 5px;
+ 	overflow: auto;
+ }
+  div.face-panel .traingle{
+  	width: 0px;
+	height: 0px;
+	border-left: 15px solid transparent;
+	border-bottom: 10px solid #CECECE;
+	border-right: 15px solid transparent;
+  }
+ table.face-list{
+ 	
+ }
+ table.face-list tr td{
+ 	margin: 2px;
+ }
+ table.face-list tr td:hover{
+ 	cursor:pointer;
+ 	background: #EEEEEE;
+ }
+ img.face-img{
+ 	margin: 1px;
+ }
+ 
+/* 右面 公用 */
+.critique-user,.critique-info,.critique-content,.critique-user-d,.critique-info-d,.critique-content-d{
+	margin: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: auto;
+}
+/* 网友头像 */
+.critique-head-pic{
+	padding: 10px;
+	width: 15%;
+	max-width:98px;
+	min-width:88px;
+	height: 98px;
+	display: inline-block;
+}
+/* 图片 */
+.critique-head-pic img{
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+}
+/* 右侧 */
+.critique-right {
+	width: 85%;
+	float: right;
+}
+/* 右侧所有span */
+.critique-right span,.critique-right-d span{
+	margin:2px;
+}
+
+	
+.critique-user,.critique-user-d{
+	
+}
+/* 楼层名 */
+ .critique-user span.user-deck,.critique-user-d span.user-deck{
+}
+/* 名字 */
+ .critique-user span.user-name,.critique-user-d span.user-name{
+	color:#87CEEB;
+}
+/* 时间 */
+.critique-user span.user-time,.critique-user-d span.user-time{
+	/* time */
+	float: right;
+	color:#C0C0C0;
+}
+/* 底部控件 */
+.critique-info,.critique-info-d{
+	padding-right: 20px;
+}
+/* 底部每个控件 */
+.critique-info a.info-reply,
+.critique-info a.info-drop,
+.critique-info a.info-praise,
+.critique-info a.info-complain,
+.critique-info-d a.info-reply,
+.critique-info-d a.info-drop,
+.critique-info-d a.info-praise,
+.critique-info-d a.info-complain{
+	text-decoration:underline;
+	display: inline-block;
+	margin-left: 1em;
+	float: right;
+}
+
+/* 文章内容 */
+.critique-content{
+		text-indent: 2em;
+		padding-left: 10px;
+		padding-right: 10px;
+}
+
+/* 响应 */
+@media only screen and (max-width: 992px) { 
+	.reply_container{ font-size:15px; }
+	.critique-right { width: 100%; float: right; }
+	.critique-head-pic{ display: none; } }
+@media only screen and (max-width: 768px) { 
+	.reply_container{ font-size:13px; }
+	.critique-head-pic{ padding: 10px; width: 15%; height: 98px; display: inline-block; }
+	.critique-right { width: 78%; float: right; } }
+@media only screen and (max-width: 456px) { 
+	.critique-right { width: 100%; float: right; }
+	.critique-head-pic{ display: none; }
+ }

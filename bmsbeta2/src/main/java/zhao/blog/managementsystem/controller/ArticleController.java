@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import zhao.blog.managementsystem.constant.Common;
+import zhao.blog.managementsystem.constant.CritiqueType;
 import zhao.blog.managementsystem.constant.FolderAndFile;
 import zhao.blog.managementsystem.entity.Article;
 import zhao.blog.managementsystem.service.ArticleService;
@@ -86,7 +88,7 @@ public class ArticleController {
 			@RequestParam(required = false) Integer pagesize, HttpSession session) throws Exception {
 		session.setAttribute("nowPage", null == pagenum || pagenum < 1 ? Common.DEFAULT_PAGE_NOW : pagenum);
 		ModelAndView modelAndView = new ModelAndView("bms/article-manage");
-		modelAndView.addObject("articles", articleServiceImpl.selectByPage(pagenum, pagesize));
+		modelAndView.addObject("articles", articleServiceImpl.select4Page(pagenum, pagesize));
 		modelAndView.addObject("maxPage", articleServiceImpl.allPage(pagesize));
 		return modelAndView;
 	}
@@ -98,5 +100,11 @@ public class ArticleController {
 		OutputStream outputStream = response.getOutputStream();
 		FileUtils.copyFile(new File(realPath, image), outputStream);
 		outputStream.close();
+	}
+	
+	@ResponseBody
+	@RequestMapping("bui/addreply")
+	public boolean add(Integer cid,Integer aid,Integer uid,String val){
+		return articleServiceImpl.addCritique(cid,aid,uid,val,CritiqueType.ARTICLE);
 	}
 }

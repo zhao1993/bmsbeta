@@ -21,4 +21,14 @@
 				if(-1 != index){
 					this.splice(index,1);
 				}
+		
+		}
+			Date.prototype.format = function(){
+				return this.getYear()>1900?this.getYear():(this.getYear()+1900)
+				+'-'+this.getMonth()
+				+'-'+this.getDate()
+				+' '
+				+this.getHours()
+				+':'+this.getMinutes()
+				+':'+this.getSeconds();
 			}

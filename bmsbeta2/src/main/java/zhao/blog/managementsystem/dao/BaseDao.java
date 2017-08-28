@@ -68,7 +68,14 @@ public interface BaseDao<T> {
 	 * @param maxResult 最多查询的数据条数
 	 * @return 返回符合条件的数据结果集合
 	 */
-	List<T> selectCriteria(int firstResult,int maxResult);
+	List<T> select4Page(int firstResult,int maxResult);
+	/**
+	 * 按照指定分页条件的分页查询
+	 * @param firstResult 第一条数据的下标位置
+	 * @param maxResult 最多查询的数据条数
+	 * @return 返回符合条件的数据结果集合
+	 */
+	List<T> select4PageByCriteria(int firstResult,int maxResult,String hql,String... params);
 	
 	/**
 	 * 查询数据条数

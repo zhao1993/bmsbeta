@@ -51,7 +51,7 @@ public class UserController {
 			HttpSession session){
 		session.setAttribute("nowPage",null==pagenum||pagenum<1?Common.DEFAULT_PAGE_NOW:pagenum);
 		ModelAndView modelAndView = new ModelAndView("bms/user-manage");
-		modelAndView.addObject("userslist",userServiceImpl.selectByPage(pagenum, pagesize));
+		modelAndView.addObject("userslist",userServiceImpl.select4Page(pagenum, pagesize));
 		modelAndView.addObject("maxPage",userServiceImpl.allPage(pagesize));
 		return modelAndView;
 	}

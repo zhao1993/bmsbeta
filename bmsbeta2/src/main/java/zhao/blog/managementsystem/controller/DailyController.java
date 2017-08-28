@@ -68,7 +68,7 @@ public class DailyController {
 			HttpSession session) throws Exception {
 		session.setAttribute("nowPage", null == pagenum || pagenum < 1 ? Common.DEFAULT_PAGE_NOW : pagenum);
 		ModelAndView modelAndView = new ModelAndView("bms/daily-manage");
-		modelAndView.addObject("dailys", dailyServiceImpl.selectByPage(pagenum, pagesize));
+		modelAndView.addObject("dailys", dailyServiceImpl.select4Page(pagenum, pagesize));
 		modelAndView.addObject("maxPage", dailyServiceImpl.allPage(pagesize));
 		return modelAndView;
 	}

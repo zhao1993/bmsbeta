@@ -125,12 +125,23 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	/* (non-Javadoc)
 	 * @see zhao.blog.managementsystem.dao.BaseDao#selectCriteria(int, int)
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> selectCriteria(int firstResult, int maxResult) {
-		return sessionFactory.getCurrentSession().createQuery("FROM "+simpleName).setFirstResult(firstResult).setMaxResults(maxResult).list();
+	public List<T> select4Page(int firstResult, int maxResult) {
+		return select4PageByCriteria(firstResult, maxResult, "FROM "+simpleName);
 	}
 
+	/* (non-Javadoc)
+	 * @see zhao.blog.managementsystem.dao.BaseDao#select4PageByCriteria(int, int, java.lang.String, java.lang.String[])
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> select4PageByCriteria(int firstResult, int maxResult, String hql, String... params) {
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		for (int i = 0; i < params.length; i++) {
+			query.setParameter(i+1, params[i]);
+		}
+		return query.setFirstResult(firstResult).setMaxResults(maxResult).list();
+	}
 	/* (non-Javadoc)
 	 * @see zhao.blog.managementsystem.dao.BaseDao#dataCount()
 	 */

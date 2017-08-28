@@ -4,7 +4,7 @@ p.article-title{
 	text-align: center;
 }
 
-.article-content{
+div.article-content{
 	text-indent: 2em;
 	-webkit-user-select:text; -moz-user-select:text; -ms-user-select:text; user-select:text;
 }
